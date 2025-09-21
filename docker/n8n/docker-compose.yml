@@ -10,8 +10,8 @@ services:
     env_file:
       - /opt/docker-compose/envfiles/global.env
     volumes:
-      - ./data:/home/node/.n8n
-      - ./files:/files
+      - ./opt/docker-data/n8n/data:/home/node/.n8n
+      - ./opt/docker-data/n8n/files:/files
     depends_on:
       - postgres
 
