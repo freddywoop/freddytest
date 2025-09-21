@@ -1,0 +1,23 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    env_file:
+      - /opt/docker-compose/envfiles/global.env
+    volumes:
+      - ./data:/home/node/.n8n
+      - ./files:/files
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: n8n-postgres
+    restart: always
+    env_file:
+      - /opt/docker-compose/envfiles/global.env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
